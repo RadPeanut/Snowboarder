@@ -5577,7 +5577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d4a23a9e0f44a46992f32b1893decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeRestart: 1
+  delayBeforeRestart: 2
   crashEffect: {fileID: 97401556}
   crashSFX: {fileID: 8300000, guid: bce78723a9134b142bb9bb3cd7ae884b, type: 3}
 --- !u!58 &567972823

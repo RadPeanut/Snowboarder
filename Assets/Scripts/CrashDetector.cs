@@ -9,12 +9,29 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] ParticleSystem crashEffect;
     [SerializeField] AudioClip crashSFX;
 
+    PlayerController playerController;
+    DustTrail dustTrail;
+
+    bool effectsEnabled = true;
+
+    private void Start()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+        dustTrail = FindObjectOfType<DustTrail>();
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ground") {
-            crashEffect.Play();
-            GetComponent<AudioSource>().PlayOneShot(crashSFX);
-            Invoke("ReloadScene", delayBeforeRestart);
+            playerController.DisableControls();
+            dustTrail.DisableEffects();
+            if (effectsEnabled)
+            {
+                GetComponent<AudioSource>().PlayOneShot(crashSFX);
+                crashEffect.Play();
+                effectsEnabled = false;
+                Invoke("ReloadScene", delayBeforeRestart);
+            }
         }
     }
 

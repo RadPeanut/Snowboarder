@@ -6,11 +6,16 @@ public class DustTrail : MonoBehaviour
 {
     [SerializeField] ParticleSystem dustTrail;
 
+    bool effectsEnabled = true;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            dustTrail.Play();
+            if (effectsEnabled)
+            {
+                dustTrail.Play();
+            }
         }
     }
 
@@ -22,15 +27,8 @@ public class DustTrail : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void DisableEffects()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        effectsEnabled = false;
     }
 }
